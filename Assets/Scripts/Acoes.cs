@@ -31,17 +31,41 @@ public class Acoes : MonoBehaviour {
         }
     }
 
-    public void InteragirFogao ()
+    public void InteragirFogao (GameObject fogao)
     {
         Personagem p = player.GetComponent<Personagem>();
         if (p.alimentoNaMao != null)
         {
-            p.alimentoNaMao = null;
-            Debug.Log("Colocou para cozinhar");
+            if (fogao.GetComponent<Fogao>().alimento == null)
+            {
+                if (fogao.GetComponent<Fogao>().isCozinhando)
+                {
+                    p.alimentoNaMao = fogao.GetComponent<Fogao>().RetirarObjetoGuardado();
+                    StopCoroutine(fogao.GetComponent<Fogao>().Cozinhar());
+                    Debug.Log("Retirou alimento");
+                }
+                else
+                {
+                    fogao.GetComponent<Fogao>().GuardarObjeto(p.alimentoNaMao);
+                    p.alimentoNaMao = null;
+                    StartCoroutine(fogao.GetComponent<Fogao>().Cozinhar());
+                    Debug.Log("Retirou alimento");
+                }
+            }
+        }
+        else if (fogao.GetComponent<Fogao>().alimento != null)
+        {
+            p.alimentoNaMao = fogao.GetComponent<Fogao>().RetirarObjetoGuardado();
+            Debug.Log("Retirou alimento");
+
         }
         else
         {
             Debug.LogError("Não há alimento na mão");
+
         }
     } 
+
+    
+
 }

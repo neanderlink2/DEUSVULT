@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [Serializable]
 public class Eventos : UnityEvent<string> { }
 
-public class Interavel : MonoBehaviour {
+public abstract class Interavel : MonoBehaviour {
 
     public Eventos OnInterou;
 
@@ -25,4 +25,5 @@ public class Interavel : MonoBehaviour {
     {
         OnInterou.Invoke(null);
     }
+
 }
