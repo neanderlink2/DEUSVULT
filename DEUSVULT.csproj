@@ -220,14 +220,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Acoes.cs" />
-    <Compile Include="Assets\Scripts\Alimento.cs" />
-    <Compile Include="Assets\Scripts\Bancada.cs" />
-    <Compile Include="Assets\Scripts\EstadoAlimento.cs" />
-    <Compile Include="Assets\Scripts\Fogao.cs" />
-    <Compile Include="Assets\Scripts\Geladeira.cs" />
-    <Compile Include="Assets\Scripts\Interavel.cs" />
-    <Compile Include="Assets\Scripts\Personagem.cs" />
+    <Compile Include="Assets\Scripts\Base\Enums\EstadoObjeto.cs" />
+    <Compile Include="Assets\Scripts\Base\Eventos\EventosAcoes.cs" />
+    <Compile Include="Assets\Scripts\Base\Interaveis\Fonte.cs" />
+    <Compile Include="Assets\Scripts\Base\Interaveis\Manipulador.cs" />
+    <Compile Include="Assets\Scripts\Base\Interaveis\Personagem.cs" />
+    <Compile Include="Assets\Scripts\Base\Interaveis\Receptor.cs" />
+    <Compile Include="Assets\Scripts\Base\Interaveis\Super\Interavel.cs" />
+    <Compile Include="Assets\Scripts\Base\Objetos\Objeto.cs" />
+    <Compile Include="Assets\Scripts\Miscs\Extensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
