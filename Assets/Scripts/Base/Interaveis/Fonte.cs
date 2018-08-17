@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fonte : Interavel
 {
@@ -13,10 +14,8 @@ public class Fonte : Interavel
         objetos = new List<Objeto>();
         for (int i = 0; i < 5; i++)
         {
-            Objeto a = ScriptableObject.CreateInstance<Objeto>();
-            a.nome = "Trigo";
-            a.tempoParaFicarPronto = 5;
-            a.estadoObj = EstadoObjeto.Inicial;
+            Objeto a = Instantiate(Resources.Load<Objeto>("Trigo"));
+
             objetos.Add(a);
         }
     }
@@ -30,6 +29,8 @@ public class Fonte : Interavel
                 Objeto a = objetos.ElementAt(0);
                 objetos.Remove(a);
                 Personagem.ObjetoNaMao = a;
+
+                a.SetarMaoJogador(Personagem.name);
             }
             else
             {

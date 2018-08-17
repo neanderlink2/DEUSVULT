@@ -17,7 +17,7 @@ public class Personagem : MonoBehaviour
     public KeyCode botaoInteracao = KeyCode.F;
 
     [SerializeField]
-    private string _axisHorizontal, _axisVertical;
+    private string _axisHorizontal = "", _axisVertical = "";
 
 
     public Objeto ObjetoNaMao

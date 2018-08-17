@@ -11,6 +11,7 @@ public class Receptor : Interavel {
         if (Personagem.ObjetoNaMao.estadoObj == EstadoObjeto.Pronto)
         {
             objetosEntregues.Add(Personagem.ObjetoNaMao);
+            Personagem.ObjetoNaMao.LimparMaoJogador(Personagem.name);
             Personagem.ObjetoNaMao = null;
             Debug.Log("Objeto entregue com sucesso!");
         }else

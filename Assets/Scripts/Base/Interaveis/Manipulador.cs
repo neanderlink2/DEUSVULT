@@ -18,7 +18,6 @@ public class Manipulador : Interavel
         {
             return objeto;
         }
-
         return null;
     }
 
@@ -29,6 +28,7 @@ public class Manipulador : Interavel
             if (objeto == null)
             {
                 GuardarObjeto(Personagem.ObjetoNaMao);
+                Personagem.ObjetoNaMao.LimparMaoJogador(Personagem.name);
                 Personagem.ObjetoNaMao = null;
                 isManipulando = true;
                 StartCoroutine(Manipular());
@@ -52,6 +52,8 @@ public class Manipulador : Interavel
             objeto = null;
             Debug.Log("Retirou objeto pronto");
         }
+
+        Personagem.ObjetoNaMao.SetarMaoJogador(Personagem.name);
     }
 
     public IEnumerator Manipular()
@@ -77,7 +79,6 @@ public class Manipulador : Interavel
         {
             objeto.estadoObj = EstadoObjeto.Pronto;
             isManipulando = false;
-            Debug.Log("Objeto pronto!");
         }
     }
 }

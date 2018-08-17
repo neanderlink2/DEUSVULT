@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class Extensions
 {
@@ -14,6 +15,20 @@ public static class Extensions
             return true;
         }
         return false;
+    }
+
+    public static void SetarMaoJogador (this Objeto obj, string nomeJogador)
+    {
+        var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
+        var layout = GameObject.Find("Canvas").transform.Find("MaoP" + numJogador);
+        layout.GetComponentInChildren<Text>().text = "Mão do P" + numJogador + "\n" + obj.nome;
+    }
+
+    public static void LimparMaoJogador(this Objeto obj, string nomeJogador)
+    {
+        var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
+        var layout = GameObject.Find("Canvas").transform.Find("MaoP" + numJogador);
+        layout.GetComponentInChildren<Text>().text = "Mão do P"+numJogador;
     }
 
 }

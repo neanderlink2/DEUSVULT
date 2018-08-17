@@ -7,5 +7,4 @@ public class Objeto : ScriptableObject {
     public EstadoObjeto estadoObj;
     public float tempoParaFicarPronto;
     public float tempoDecorrido;
-
 }
