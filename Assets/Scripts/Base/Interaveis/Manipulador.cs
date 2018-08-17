@@ -6,11 +6,28 @@ public class Manipulador : Interavel
 {
     public Objeto objeto;
     public bool isManipulando;
+    private Color corNormal;
+
+    private void Awake()
+    {
+        corNormal = GetComponent<Renderer>().material.color;
+    }
+
+    void Update ()
+    {
+        if (isManipulando)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }else
+        {
+            GetComponent<Renderer>().material.color = corNormal;
+        }
+    }
 
     public void GuardarObjeto(Objeto obj)
     {
         objeto = obj;
-    }
+    }    
 
     public Objeto RetirarObjetoGuardado()
     {

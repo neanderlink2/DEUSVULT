@@ -32,14 +32,19 @@ Estão sujeitos a alterações a qualquer momento, mas por enquanto:
 Player 1:
 
 Movimentação - Setas >>> Está definido em Input -> HorizontalP1 e VerticalP1
-Interagir - ENTER >>> Este é um campo dentro da classe Personagem, é facilmente arrumado.
+Interagir - ENTER >>> Este é um campo dentro da classe Personagem, é facilmente trocado.
 
 
 Player 2:
 
 Movimentação - WASD >>> Está definido em Input -> HorizontalP2 e VerticalP2
-Interagir - F >>> Este é um campo dentro da classe Personagem, é facilmente arrumado.
+Interagir - F >>> Este é um campo dentro da classe Personagem, é facilmente trocado.
 
+
+Player 3:
+
+Movimentação - IJKL >>> Está definido em Input -> HorizontalP3 e VerticalP3.
+Interagir - P >>> Este é um campo dentro da classe Personagem, é facilmente trocado.
 
 
 ---------Mecânica-------
