@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Receptor : Interavel {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public List<Objeto> objetosEntregues;
+
+    public void EntregarObjeto (Personagem personagem)
+    {
+        if (personagem.ObjetoNaMao.estadoObj == EstadoObjeto.Pronto)
+        {
+            objetosEntregues.Add(personagem.ObjetoNaMao);
+            personagem.ObjetoNaMao = null;
+            Debug.Log("Objeto entregue com sucesso!");
+        }else
+        {
+            Debug.Log("Não pode entregar este objeto ainda. Ele não está pronto.");
+        }
+    }
+
 }

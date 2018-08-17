@@ -11,6 +11,8 @@ public abstract class Interavel : MonoBehaviour {
 
     public Eventos OnInteragiu;
 
+    protected Personagem personagem;
+
 	// Use this for initialization
 	void Start () {
         

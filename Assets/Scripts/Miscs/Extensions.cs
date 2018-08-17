@@ -10,4 +10,14 @@ public static class Extensions
     {
         return GameObject.FindWithTag("Player").GetComponent<Personagem>();
     }
+
+    public static bool IsIgual (this float num1, float num2)
+    {
+        if (num1 >= num2-0.1f && num1 <= num2+0.1f)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

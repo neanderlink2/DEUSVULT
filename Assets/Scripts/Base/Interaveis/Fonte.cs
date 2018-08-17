@@ -25,13 +25,13 @@ public class Fonte : Interavel
     {
         Personagem p = t.GetPersonagem();
 
-        if (p.objetoNaMao == null)
+        if (p.ObjetoNaMao == null)
         {
             if (objetos.Count > 0)
             {
                 Objeto a = objetos.ElementAt(0);
                 objetos.Remove(a);
-                p.objetoNaMao = a;
+                p.ObjetoNaMao = a;
             }
             else
             {

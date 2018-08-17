@@ -5,28 +5,59 @@ using UnityEngine;
 
 public class Personagem : MonoBehaviour
 {
-
     private Rigidbody _rb;
-    public float vel = 5f, tempoRotacao = 2f;
 
-    // 0 - Cima, 1 - Direita, 2 - Baixo, 3 - Esquerda, 4 - CimaDireita, 5 - BaixoDireita, 6 - BaixoEsquerda, 7 - CimaEsquerda
-    public float[] rotacoesY;
+    [SerializeField]
+    private float _vel = 5f, _velRotacao = 10f;
 
+    [SerializeField]
+    private Objeto _objetoNaMao;
 
-    public Objeto objetoNaMao;
-
+    [SerializeField]
     public KeyCode botaoInteracao = KeyCode.F;
 
-    // Use this for initialization
+    public Objeto ObjetoNaMao
+    {
+        get
+        {
+            return _objetoNaMao;
+        }
+
+        set
+        {
+            _objetoNaMao = value;
+        }
+    }
+
+    public float Vel
+    {
+        get
+        {
+            return _vel;
+        }
+
+        set
+        {
+            _vel = value;
+        }
+    }
+
+    public float VelRotacao
+    {
+        get
+        {
+            return _velRotacao;
+        }
+
+        set
+        {
+            _velRotacao = value;
+        }
+    }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Mover();
     }
 
     void FixedUpdate()
@@ -34,92 +65,46 @@ public class Personagem : MonoBehaviour
         Mover();
     }
 
-    public void Mover ()
+    public void Mover()
     {
-        var y = Input.GetAxisRaw("Vertical");
-        var x = Input.GetAxisRaw("Horizontal");
+        var y = Input.GetAxis("Vertical");
+        var x = Input.GetAxis("Horizontal");
 
         if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
         {
             StopAllCoroutines();
+            
+        }
+        if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+        {
+            Rotacionar();
+
+            _rb.velocity = new Vector3(x * Vel, _rb.velocity.y, y * Vel);
         }
 
-        if (x > 0 && (y > -0.2f && y < 0.2f))
-        {
-            if (transform.rotation.y != rotacoesY[1])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[1], 0)));
-            }
-        }
-        else if (x < 0 && (y > -0.2f && y < 0.2f))
-        {
-            if (transform.rotation.y != rotacoesY[3])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[3], 0)));
-            }
-        }
-        else if (y > 0 && (x > -0.2f && x < 0.2f))
-        {
-            if (transform.rotation.y != rotacoesY[0])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[0], 0)));
-            }
-        }
-        else if (y < 0 && (x > -0.2f && x < 0.2f))
-        {
-            if (transform.rotation.y != rotacoesY[2])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[2], 0)));
-            }
-        }
 
-        if (x > 0 && y > 0)
-        {
-            if (transform.rotation.y != rotacoesY[4])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[4], 0)));
-            }
-        }
-        else if (x < 0 && y > 0)
-        {
-            if (transform.rotation.y != rotacoesY[7])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[7], 0)));
-            }
-
-        }
-        else if (x > 0 && y < 0)
-        {
-            if (transform.rotation.y != rotacoesY[5])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[5], 0)));
-            }
-        }
-        else if (x < 0 && y < 0)
-        {
-            if (transform.rotation.y != rotacoesY[6])
-            {
-                StartCoroutine(Rotacionar(tempoRotacao, new Vector3(0, rotacoesY[6], 0)));
-            }
-        }
-
-        _rb.velocity = new Vector3(x * vel, _rb.velocity.y, y * vel);
     }
 
-    public IEnumerator Rotacionar(float tempo, Vector3 posicao)
+    public void Rotacionar()
     {
-        for (float i = 0; i < tempo; i += 0.01f)
+        Vector3 direcao = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")), dirRaw = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        if (direcao.sqrMagnitude > 1)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(posicao), i / tempo);
-
-            if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
-            {
-                break;
-            }
-
-            yield return new WaitForSeconds(0.01f);
+            direcao.Normalize();
         }
-        StopAllCoroutines();
-    }
 
+        if (dirRaw.sqrMagnitude > 1)
+        {
+            dirRaw.Normalize();
+        }
+
+        if (dirRaw != Vector3.zero)
+        {
+            var rotacao = Quaternion.LookRotation(direcao).eulerAngles;
+
+            _rb.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(rotacao.x, Mathf.Round(rotacao.y / 45) * 45, rotacao.z), Time.deltaTime * VelRotacao);
+
+        }
+    }
 }

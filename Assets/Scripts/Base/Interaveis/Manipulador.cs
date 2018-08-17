@@ -22,16 +22,36 @@ public class Manipulador : Interavel
         return null;
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
+    public void DeixarManipulando(Personagem p)
+    {        
+        if (p.ObjetoNaMao != null)
+        {
+            if (objeto == null)
+            {
+                GuardarObjeto(p.ObjetoNaMao);
+                p.ObjetoNaMao = null;
+                isManipulando = true;
+                StartCoroutine(Manipular());
+                Debug.Log("Colocou para manipular");
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RetirarObjetoManipulacao(Personagem p)
     {
-
+        if (isManipulando)
+        {
+            p.ObjetoNaMao = RetirarObjetoGuardado();
+            isManipulando = false;
+            objeto = null;
+            Debug.Log("Retirou objeto antes de terminar");
+        }
+        else
+        {
+            p.ObjetoNaMao = RetirarObjetoGuardado();
+            objeto = null;
+            Debug.Log("Retirou objeto pronto");
+        }
     }
 
     public IEnumerator Manipular()
