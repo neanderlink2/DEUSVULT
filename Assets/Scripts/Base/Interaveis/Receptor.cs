@@ -6,12 +6,12 @@ public class Receptor : Interavel {
 
     public List<Objeto> objetosEntregues;
 
-    public void EntregarObjeto (Personagem personagem)
+    public void EntregarObjeto ()
     {
-        if (personagem.ObjetoNaMao.estadoObj == EstadoObjeto.Pronto)
+        if (Personagem.ObjetoNaMao.estadoObj == EstadoObjeto.Pronto)
         {
-            objetosEntregues.Add(personagem.ObjetoNaMao);
-            personagem.ObjetoNaMao = null;
+            objetosEntregues.Add(Personagem.ObjetoNaMao);
+            Personagem.ObjetoNaMao = null;
             Debug.Log("Objeto entregue com sucesso!");
         }else
         {

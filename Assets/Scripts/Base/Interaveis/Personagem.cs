@@ -16,6 +16,10 @@ public class Personagem : MonoBehaviour
     [SerializeField]
     public KeyCode botaoInteracao = KeyCode.F;
 
+    [SerializeField]
+    private string _axisHorizontal, _axisVertical;
+
+
     public Objeto ObjetoNaMao
     {
         get
@@ -28,7 +32,6 @@ public class Personagem : MonoBehaviour
             _objetoNaMao = value;
         }
     }
-
     public float Vel
     {
         get
@@ -41,7 +44,6 @@ public class Personagem : MonoBehaviour
             _vel = value;
         }
     }
-
     public float VelRotacao
     {
         get
@@ -67,27 +69,25 @@ public class Personagem : MonoBehaviour
 
     public void Mover()
     {
-        var y = Input.GetAxis("Vertical");
-        var x = Input.GetAxis("Horizontal");
+        var y = Input.GetAxis(_axisVertical);
+        var x = Input.GetAxis(_axisHorizontal);
 
-        if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
+        if (Input.GetButtonDown(_axisHorizontal) || Input.GetButtonDown(_axisVertical))
         {
             StopAllCoroutines();
             
         }
-        if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+        if (Input.GetButton(_axisHorizontal) || Input.GetButton(_axisVertical))
         {
             Rotacionar();
 
             _rb.velocity = new Vector3(x * Vel, _rb.velocity.y, y * Vel);
         }
-
-
     }
 
     public void Rotacionar()
     {
-        Vector3 direcao = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")), dirRaw = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector3 direcao = new Vector3(Input.GetAxis(_axisHorizontal), 0, Input.GetAxis(_axisVertical)), dirRaw = new Vector3(Input.GetAxisRaw(_axisHorizontal), 0, Input.GetAxisRaw(_axisVertical));
 
         if (direcao.sqrMagnitude > 1)
         {
@@ -104,7 +104,6 @@ public class Personagem : MonoBehaviour
             var rotacao = Quaternion.LookRotation(direcao).eulerAngles;
 
             _rb.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(rotacao.x, Mathf.Round(rotacao.y / 45) * 45, rotacao.z), Time.deltaTime * VelRotacao);
-
         }
     }
 }

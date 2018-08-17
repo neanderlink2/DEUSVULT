@@ -22,14 +22,14 @@ public class Manipulador : Interavel
         return null;
     }
 
-    public void DeixarManipulando(Personagem p)
+    public void DeixarManipulando()
     {        
-        if (p.ObjetoNaMao != null)
+        if (Personagem.ObjetoNaMao != null)
         {
             if (objeto == null)
             {
-                GuardarObjeto(p.ObjetoNaMao);
-                p.ObjetoNaMao = null;
+                GuardarObjeto(Personagem.ObjetoNaMao);
+                Personagem.ObjetoNaMao = null;
                 isManipulando = true;
                 StartCoroutine(Manipular());
                 Debug.Log("Colocou para manipular");
@@ -37,18 +37,18 @@ public class Manipulador : Interavel
         }
     }
 
-    public void RetirarObjetoManipulacao(Personagem p)
+    public void RetirarObjetoManipulacao()
     {
         if (isManipulando)
         {
-            p.ObjetoNaMao = RetirarObjetoGuardado();
+            Personagem.ObjetoNaMao = RetirarObjetoGuardado();
             isManipulando = false;
             objeto = null;
             Debug.Log("Retirou objeto antes de terminar");
         }
         else
         {
-            p.ObjetoNaMao = RetirarObjetoGuardado();
+            Personagem.ObjetoNaMao = RetirarObjetoGuardado();
             objeto = null;
             Debug.Log("Retirou objeto pronto");
         }

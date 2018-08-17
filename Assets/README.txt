@@ -23,12 +23,28 @@ Existem quatro classes para esses objetos interáveis, sendo que a classe 'Intera
 A classe Fonte, Manipulador e Receptor são especificações de Interavel, mas serão usadas como base para criar classes específicas de cada momento.
 
 
-
 Também foi criada uma classe Personagem, que contará com todas as ações padrões de personagens. Ele deverá ser especificado de acordo com cada personagem e sua particularidade.
 
 -----Jogabilidade------
 
 Estão sujeitos a alterações a qualquer momento, mas por enquanto:
 
-Movimentação - WASD ou Setas. >>> Backlog - Adicionar na parte de INPUT configurações diferentes para cada um dos jogadores.
+Player 1:
+
+Movimentação - Setas >>> Está definido em Input -> HorizontalP1 e VerticalP1
+Interagir - ENTER >>> Este é um campo dentro da classe Personagem, é facilmente arrumado.
+
+
+Player 2:
+
+Movimentação - WASD >>> Está definido em Input -> HorizontalP2 e VerticalP2
 Interagir - F >>> Este é um campo dentro da classe Personagem, é facilmente arrumado.
+
+
+
+---------Mecânica-------
+
+Os personagens podem pegar algum objeto na "Geladeira".
+Após, podem colocar esse objeto para cozinhar no "Fogão".
+Por fim, podem depositar o alimento pronto na "Bancada", lembrando que apenas alimentos prontos podem ficar na "Bancada".
+

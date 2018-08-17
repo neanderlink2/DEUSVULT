@@ -23,15 +23,13 @@ public class Fonte : Interavel
 
     public void PegarObjeto (Transform t)
     {
-        Personagem p = t.GetPersonagem();
-
-        if (p.ObjetoNaMao == null)
+        if (Personagem.ObjetoNaMao == null)
         {
             if (objetos.Count > 0)
             {
                 Objeto a = objetos.ElementAt(0);
                 objetos.Remove(a);
-                p.ObjetoNaMao = a;
+                Personagem.ObjetoNaMao = a;
             }
             else
             {

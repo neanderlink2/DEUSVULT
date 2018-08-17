@@ -11,10 +11,12 @@ public abstract class Interavel : MonoBehaviour {
 
     public Eventos OnInteragiu;
 
-    protected Personagem personagem;
+    public Personagem Personagem { get; set; }
 
-	// Use this for initialization
-	void Start () {
+
+
+    // Use this for initialization
+    void Start () {
         
     }
 
@@ -25,10 +27,15 @@ public abstract class Interavel : MonoBehaviour {
 
     void OnTriggerStay (Collider other)
     {
-        if (Input.GetKeyDown(transform.GetPersonagem().botaoInteracao))
+        if (other.GetComponent<Personagem>() != null)
         {
-            OnInteragiu.Invoke(null);
+            Personagem = other.GetComponent<Personagem>();
+            if (Input.GetKeyDown(Personagem.botaoInteracao))
+            {
+                OnInteragiu.Invoke(null);
+            }
         }
+        
     }
 
 }

@@ -6,10 +6,6 @@ using UnityEngine;
 
 public static class Extensions
 {
-    public static Personagem GetPersonagem(this Transform obj)
-    {
-        return GameObject.FindWithTag("Player").GetComponent<Personagem>();
-    }
 
     public static bool IsIgual (this float num1, float num2)
     {

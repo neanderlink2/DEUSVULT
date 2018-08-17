@@ -11,19 +11,18 @@ public class EventosAcoes : MonoBehaviour
 
     public void InteragirManipulador(GameObject manipulador)
     {
-        Personagem p = transform.GetPersonagem();
         Manipulador m = manipulador.GetComponent<Manipulador>();
 
-        if (p.ObjetoNaMao != null)
+        if (m.Personagem.ObjetoNaMao != null)
         {
             if (m.objeto == null)
             {
-                m.DeixarManipulando(p);
+                m.DeixarManipulando();
             }
         }
         else if (m.objeto != null)
         {
-            m.RetirarObjetoManipulacao(p);
+            m.RetirarObjetoManipulacao();
         }
         else
         {
@@ -34,7 +33,7 @@ public class EventosAcoes : MonoBehaviour
 
     public void InteragirReceptor(GameObject receptor)
     {        
-        receptor.GetComponent<Receptor>().EntregarObjeto(transform.GetPersonagem());
+        receptor.GetComponent<Receptor>().EntregarObjeto();
     }
 
 }
