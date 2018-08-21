@@ -6,6 +6,7 @@ using UnityEngine;
 public class Personagem : MonoBehaviour
 {
     private Rigidbody _rb;
+    private Animator _anim;
 
     [SerializeField]
     private float _vel = 5f, _velRotacao = 10f;
@@ -60,6 +61,7 @@ public class Personagem : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -77,11 +79,15 @@ public class Personagem : MonoBehaviour
             StopAllCoroutines();
             
         }
+
         if (Input.GetButton(_axisHorizontal) || Input.GetButton(_axisVertical))
         {
+            _anim.SetFloat("Move", 1);
             Rotacionar();
-
             _rb.velocity = new Vector3(x * Vel, _rb.velocity.y, y * Vel);
+        }else
+        {
+            _anim.SetFloat("Move", 0);
         }
     }
 
