@@ -8,6 +8,9 @@ public class Manipulador : Interavel
     public bool isManipulando;
     private Color corNormal;
 
+    [SerializeField]
+    protected Color corUsando = Color.red;
+
     private void Awake()
     {
         corNormal = GetComponent<Renderer>().material.color;
@@ -17,7 +20,7 @@ public class Manipulador : Interavel
     {
         if (isManipulando)
         {
-            GetComponent<Renderer>().material.color = Color.red;
+            GetComponent<Renderer>().material.color = corUsando;
         }else
         {
             GetComponent<Renderer>().material.color = corNormal;
@@ -36,6 +39,25 @@ public class Manipulador : Interavel
             return objeto;
         }
         return null;
+    }
+
+    public void Manipulacao ()
+    {
+        if (Personagem.ObjetoNaMao != null)
+        {
+            if (objeto == null)
+            {
+                DeixarManipulando();
+            }
+        }
+        else if (objeto != null)
+        {
+            RetirarObjetoManipulacao();
+        }
+        else
+        {
+            Debug.LogError("Não há objeto na mão");
+        }
     }
 
     public void DeixarManipulando()
@@ -95,6 +117,10 @@ public class Manipulador : Interavel
         if (objeto != null)
         {
             objeto.estadoObj = EstadoObjeto.Pronto;
+            if (objeto is ObjetoAperfeicoavel & objeto.estadoObj != EstadoObjeto.Pronto)
+            {
+                objeto.estadoObj = EstadoObjeto.PreparadoParaAperfeicoar;
+            }
             isManipulando = false;
         }
     }

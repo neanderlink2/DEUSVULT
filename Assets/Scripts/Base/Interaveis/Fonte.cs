@@ -1,26 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Fonte : Interavel
 {
     public List<Objeto> objetos;
 
-    public void Awake ()
+    public virtual void Awake ()
     {
         objetos = new List<Objeto>();
-        for (int i = 0; i < 5; i++)
-        {
-            Objeto a = Instantiate(Resources.Load<Objeto>("Trigo"));
-
-            objetos.Add(a);
-        }
     }
 
-    public void PegarObjeto (Transform t)
+    public void PegarObjeto ()
     {
         if (Personagem.ObjetoNaMao == null)
         {

@@ -29,19 +29,19 @@ Também foi criada uma classe Personagem, que contará com todas as ações padrões 
 
 Estão sujeitos a alterações a qualquer momento, mas por enquanto:
 
-Player 1:
+Player 1 - Azul:
 
 Movimentação - Setas >>> Está definido em Input -> HorizontalP1 e VerticalP1
 Interagir - ENTER >>> Este é um campo dentro da classe Personagem, é facilmente trocado.
 
 
-Player 2:
+Player 2 - Verde:
 
 Movimentação - WASD >>> Está definido em Input -> HorizontalP2 e VerticalP2
 Interagir - F >>> Este é um campo dentro da classe Personagem, é facilmente trocado.
 
 
-Player 3:
+Player 3 - Amarelo:
 
 Movimentação - IJKL >>> Está definido em Input -> HorizontalP3 e VerticalP3.
 Interagir - P >>> Este é um campo dentro da classe Personagem, é facilmente trocado.
@@ -49,7 +49,11 @@ Interagir - P >>> Este é um campo dentro da classe Personagem, é facilmente troc
 
 ---------Mecânica-------
 
-Os personagens podem pegar algum objeto na "Geladeira".
-Após, podem colocar esse objeto para cozinhar no "Fogão".
-Por fim, podem depositar o alimento pronto na "Bancada", lembrando que apenas alimentos prontos podem ficar na "Bancada".
+
+O cenário que o personagem Verde se encontra é a área de conserto de armaduras e armas.
+As encomendas chegarão no Balcão (cubo cinza) a cada 15 segundos.
+O Jogador deve pegar uma encomenda e levá-la à fornalha para deixá-la maleável (apertar uma vez o botão de interação deixará a encomenda na fornalha).
+Após, deve consertar a armadura com um martelo (segurar o botão de interação fará isto) e deixá-la nova em folha.
+Por fim, a encomenda pronta deve ser levada ao carrinho que levará para o campo de batalha.
+
 

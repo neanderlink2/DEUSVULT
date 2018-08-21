@@ -8,16 +8,25 @@ public class Receptor : Interavel {
 
     public void EntregarObjeto ()
     {
-        if (Personagem.ObjetoNaMao.estadoObj == EstadoObjeto.Pronto)
+        if (Personagem.ObjetoNaMao != null)
         {
-            objetosEntregues.Add(Personagem.ObjetoNaMao);
-            Personagem.ObjetoNaMao.LimparMaoJogador(Personagem.name);
-            Personagem.ObjetoNaMao = null;
-            Debug.Log("Objeto entregue com sucesso!");
-        }else
-        {
-            Debug.Log("Não pode entregar este objeto ainda. Ele não está pronto.");
+            if (Personagem.ObjetoNaMao.estadoObj == EstadoObjeto.Pronto)
+            {
+                objetosEntregues.Add(Personagem.ObjetoNaMao);
+                Personagem.ObjetoNaMao.LimparMaoJogador(Personagem.name);
+                Personagem.ObjetoNaMao = null;
+                Debug.Log("Objeto entregue com sucesso!");
+            }
+            else
+            {
+                Debug.Log("Não pode entregar este objeto ainda. Ele não está pronto.");
+            }
         }
+        else
+        {
+            Debug.Log("Não tem objeto na mão.");
+        }
+        
     }
 
 }

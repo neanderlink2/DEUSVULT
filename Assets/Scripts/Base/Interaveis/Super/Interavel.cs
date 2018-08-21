@@ -25,7 +25,7 @@ public abstract class Interavel : MonoBehaviour {
         
 	}
 
-    void OnTriggerStay (Collider other)
+    protected virtual void OnTriggerStay (Collider other)
     {
         if (other.GetComponent<Personagem>() != null)
         {

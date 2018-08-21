@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -222,12 +224,20 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Base\Enums\EstadoObjeto.cs" />
     <Compile Include="Assets\Scripts\Base\Eventos\EventosAcoes.cs" />
+    <Compile Include="Assets\Scripts\Base\Interaveis\Aperfeicoador.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Fonte.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Manipulador.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Personagem.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Receptor.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Super\Interavel.cs" />
+    <Compile Include="Assets\Scripts\Base\Objetos\Armadura.cs" />
     <Compile Include="Assets\Scripts\Base\Objetos\Objeto.cs" />
+    <Compile Include="Assets\Scripts\Base\Objetos\ObjetoAperfeicoavel.cs" />
+    <Compile Include="Assets\Scripts\Base\Objetos\Pedido.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\BalcaoController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\CarrinhoController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\ForjaController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\FornalhaController.cs" />
     <Compile Include="Assets\Scripts\Miscs\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
