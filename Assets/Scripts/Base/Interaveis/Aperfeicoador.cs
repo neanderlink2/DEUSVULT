@@ -8,8 +8,7 @@ public class Aperfeicoador : Interavel
 {
     public Objeto obj;
     public bool isAperfeicoando;
-
-
+    public int tempoAdd = 1;
 
     protected override void OnTriggerStay(Collider collider)
     {
@@ -49,16 +48,27 @@ public class Aperfeicoador : Interavel
 
     private void DeixarAperfeicoando()
     {
+        
         if (Personagem.ObjetoNaMao.estadoObj == EstadoObjeto.PreparadoParaAperfeicoar || Personagem.ObjetoNaMao.estadoObj == EstadoObjeto.EmAperfeicoamento)
         {
             var obj = Personagem.ObjetoNaMao as ObjetoAperfeicoavel;
             if (obj.tempoDecorridoAperfeicoamento < obj.tempoAperfeicoamento)
             {
                 obj.estadoObj = EstadoObjeto.EmAperfeicoamento;
-                obj.tempoDecorridoAperfeicoamento += 1 * Time.deltaTime;
+                obj.tempoDecorridoAperfeicoamento += tempoAdd * Time.deltaTime;
+
+                var s = MyCanvas.BarrasTarefa.Where(x => x.name == "BarraTarefaP" + Personagem.numeroJogador).FirstOrDefault();
+
+                s.gameObject.SetActive(true);
+                s.maxValue = obj.tempoAperfeicoamento;
+                s.value = obj.tempoDecorridoAperfeicoamento;
             }
             else
             {
+                var s = MyCanvas.BarrasTarefa.Where(x => x.name == "BarraTarefaP" + Personagem.numeroJogador).FirstOrDefault();
+
+                s.gameObject.SetActive(false);
+                s.value = 0;
                 obj.estadoObj = EstadoObjeto.Pronto;
             }
         }

@@ -16,7 +16,7 @@ public class Manipulador : Interavel
         corNormal = GetComponent<Renderer>().material.color;
     }
 
-    void Update ()
+    new void Update ()
     {
         if (isManipulando)
         {
@@ -89,6 +89,8 @@ public class Manipulador : Interavel
         {
             Personagem.ObjetoNaMao = RetirarObjetoGuardado();
             objeto = null;
+            MyCanvas.BarraFornalha.gameObject.SetActive(false);
+            MyCanvas.BarraFornalha.value = 0;
             Debug.Log("Retirou objeto pronto");
         }
 
@@ -99,6 +101,8 @@ public class Manipulador : Interavel
     {
         Debug.Log("Manipulando...");
         objeto.estadoObj = EstadoObjeto.EmManipulacao;
+        MyCanvas.BarraFornalha.gameObject.SetActive(true);
+        MyCanvas.BarraFornalha.maxValue = objeto.tempoParaFicarPronto;
 
         for (float i = objeto.tempoDecorrido; objeto != null && i < objeto.tempoParaFicarPronto; i += 0.01f)
         {
@@ -108,18 +112,20 @@ public class Manipulador : Interavel
             }
 
             objeto.tempoDecorrido = i;
-
-            StopCoroutine(Manipular());
+            MyCanvas.BarraFornalha.value = i;
 
             yield return new WaitForSeconds(0.01f);
         }
 
         if (objeto != null)
         {
-            objeto.estadoObj = EstadoObjeto.Pronto;
-            if (objeto is ObjetoAperfeicoavel & objeto.estadoObj != EstadoObjeto.Pronto)
+            
+            if (objeto is ObjetoAperfeicoavel && objeto.estadoObj != EstadoObjeto.Pronto)
             {
                 objeto.estadoObj = EstadoObjeto.PreparadoParaAperfeicoar;
+            }else
+            {
+                objeto.estadoObj = EstadoObjeto.Pronto;
             }
             isManipulando = false;
         }

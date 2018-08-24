@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Personagem : MonoBehaviour
 {
     private Rigidbody _rb;
     private Animator _anim;
+    public int numeroJogador = 1;
 
     [SerializeField]
     private float _vel = 5f, _velRotacao = 10f;
@@ -58,18 +60,18 @@ public class Personagem : MonoBehaviour
         }
     }
 
-    void Start()
+    protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Mover();
     }
 
-    public void Mover()
+    public virtual void Mover()
     {
         var y = Input.GetAxis(_axisVertical);
         var x = Input.GetAxis(_axisHorizontal);
@@ -91,7 +93,7 @@ public class Personagem : MonoBehaviour
         }
     }
 
-    public void Rotacionar()
+    public virtual void Rotacionar()
     {
         Vector3 direcao = new Vector3(Input.GetAxis(_axisHorizontal), 0, Input.GetAxis(_axisVertical)), dirRaw = new Vector3(Input.GetAxisRaw(_axisHorizontal), 0, Input.GetAxisRaw(_axisVertical));
 

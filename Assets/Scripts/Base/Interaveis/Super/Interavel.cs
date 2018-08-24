@@ -21,7 +21,7 @@ public abstract class Interavel : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    public virtual void Update () {
         
 	}
 

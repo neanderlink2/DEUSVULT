@@ -237,7 +237,12 @@
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\CarrinhoController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\ForjaController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\FornalhaController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Personagens\BarbaroController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Personagens\LadinoController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Personagens\PersonagemController.cs" />
     <Compile Include="Assets\Scripts\Miscs\Extensions.cs" />
+    <Compile Include="Assets\Scripts\Miscs\MyCanvas.cs" />
+    <Compile Include="Assets\Scripts\Miscs\PersonagemSlider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
