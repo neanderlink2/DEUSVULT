@@ -57,3 +57,8 @@ Após, deve consertar a armadura com um martelo (segurar o botão de interação far
 Por fim, a encomenda pronta deve ser levada ao carrinho que levará para o campo de batalha.
 
 
+-------Configuração----------
+
+Objetos:
+	Quando estiver criando objetos de itens, como Armadura, Alimentos e etc, sempre criar um Prefab com o mesmo NOME
+do Objeto. Este prefab será procurado pelo código e criará o Prefab na mão do jogador.

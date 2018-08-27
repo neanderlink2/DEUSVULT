@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4417766543979812}
   - component: {fileID: 33630273149891184}
   - component: {fileID: 23187277172883730}
+  - component: {fileID: 114504995824439166}
   m_Layer: 0
-  m_Name: Trigo
+  m_Name: Armadura de Bronze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770533005682674}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8545885, y: -3.15, z: 10.456802}
-  m_LocalScale: {x: 0.52902055, y: 1.4482951, z: 0.52902067}
+  m_LocalRotation: {x: -0, y: -0, z: -0.4104379, w: 0.9118886}
+  m_LocalPosition: {x: 9.06407, y: -1.6, z: 5.598778}
+  m_LocalScale: {x: 0.48795968, y: 0.25994283, z: 0.52527833}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -48.465004}
 --- !u!23 &23187277172883730
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770533005682674}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114504995824439166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1770533005682674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e51857cde14af46a128e7be3f97784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 11400000, guid: c455aaa1abe66b24c990e871caf3a084, type: 2}

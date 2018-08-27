@@ -5,10 +5,12 @@ using UnityEngine;
 public class Fonte : Interavel
 {
     public List<Objeto> objetos;
+    public List<GameObject> pObjetos;
 
     public virtual void Awake ()
     {
         objetos = new List<Objeto>();
+        pObjetos = new List<GameObject>();
     }
 
     public void PegarObjeto ()

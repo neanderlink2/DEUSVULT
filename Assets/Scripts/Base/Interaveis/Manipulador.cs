@@ -70,6 +70,7 @@ public class Manipulador : Interavel
                 Personagem.ObjetoNaMao.LimparMaoJogador(Personagem.name);
                 Personagem.ObjetoNaMao = null;
                 isManipulando = true;
+                
                 StartCoroutine(Manipular());
                 Debug.Log("Colocou para manipular");
             }
