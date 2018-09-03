@@ -20,21 +20,16 @@ public static class Extensions
     public static void SetarMaoJogador(this Objeto obj, string nomeJogador)
     {
         var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
-        var layout = GameObject.Find("Canvas").transform.Find("MaoP" + numJogador);
 
-        var prefab = Resources.Load<GameObject>(obj.nome);
+        var prefab = Resources.Load<GameObject>("Prefabs/"+obj.nome);
         var mao = GameObject.Find("Player" + numJogador).transform.Find("Mao");
         GameObject.Instantiate(prefab, mao.position, Quaternion.Euler(0, 0, 90), mao);
-
-        layout.GetComponentInChildren<Text>().text = "Mão do P" + numJogador + "\n" + obj.nome;
     }
 
     public static void LimparMaoJogador(this Objeto obj, string nomeJogador)
     {
         var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
-        var layout = GameObject.Find("Canvas").transform.Find("MaoP" + numJogador);
 
-        var prefab = Resources.Load<GameObject>(obj.nome);
         var mao = GameObject.Find("Player" + numJogador).transform.Find("Mao");
 
         for (int i = 0; i < mao.childCount; i++)
@@ -42,7 +37,6 @@ public static class Extensions
             GameObject.Destroy(mao.GetChild(i).gameObject);
         }
 
-        layout.GetComponentInChildren<Text>().text = "Mão do P" + numJogador;
     }
 
 }

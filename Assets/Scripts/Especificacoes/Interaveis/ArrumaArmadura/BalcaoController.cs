@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class BalcaoController : Fonte {
 
-    public override void Awake()
+    public void Awake()
     {
-        base.Awake();
         StartCoroutine(CriarPedidos());
     }
 
@@ -13,7 +12,7 @@ public class BalcaoController : Fonte {
     {
         for (int i = 0; i < 5; i++)
         {
-            objetos.Add(Instantiate(Resources.Load<Armadura>("ArmaduraBronze")));
+            objetos.Add(Instantiate(Resources.Load<Armadura>("Objetos/ArmaduraBronze")));
             yield return new WaitForSeconds(15f);
         }
     }

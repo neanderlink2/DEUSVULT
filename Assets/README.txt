@@ -7,20 +7,24 @@ Eu dividi por enquanto em três estados do objeto cada um:
 
 -Inicial: Estado inicial do objeto, saído direto de sua fonte.
 -EmManipulacao: Estado em que o objeto começou a ser manipulado. O jogador poderá ver esse estado apenas caso tenha o colocado para manipulação.
+-PreparadoParaAperfeicoar: Estado em que o objeto está pronto para ser Aperfeiçoado. Este estado é opcional e dependerá do objeto usado.
+-EmAperfeicoamento: Estado em que o objeto está em processo de Aperfeiçoamento. Este estado é opcional e dependerá do objeto usado.
 -Pronto: Estado final em que o objeto está pronto para ser entregue.
+
 
 Esses estados estão descritos com a enumeração EstadoObjeto.
 
 
 
-Existem três tipos de objetos interáveis:
+Existem cinco tipos de objetos interáveis:
 
 -Fonte: Aonde o jogador poderá retirar objetos em estado inicial.
 -Manipulador: Local em que o jogador deixará o objeto para ser manipulado até o estado Pronto.
+-Aperfeiçoador: Neste interável o jogador poderá aperfeiçoar um objeto. Para tal, ele deve 
+-Armazenador: O Armazenador servirá para dois propósitos. Para guardar um objeto ou juntar dois objetos para formar uma combinação. 
 -Receptor: Receberá o objeto pronto.
 
-Existem quatro classes para esses objetos interáveis, sendo que a classe 'Interavel' é designada apenas para ser pai de todos.
-A classe Fonte, Manipulador e Receptor são especificações de Interavel, mas serão usadas como base para criar classes específicas de cada momento.
+A classe Fonte, Manipulador, Aperfeiçoador, Armazenador e Receptor são especificações de Interavel, mas serão usadas como base para criar classes específicas de cada momento, como a Fornalha por exemplo.
 
 
 Também foi criada uma classe Personagem, que contará com todas as ações padrões de personagens. Ele deverá ser especificado de acordo com cada personagem e sua particularidade.
@@ -61,4 +65,12 @@ Por fim, a encomenda pronta deve ser levada ao carrinho que levará para o campo 
 
 Objetos:
 	Quando estiver criando objetos de itens, como Armadura, Alimentos e etc, sempre criar um Prefab com o mesmo NOME
-do Objeto. Este prefab será procurado pelo código e criará o Prefab na mão do jogador.
+do Objeto. Este prefab será procurado pelo código e criará o Prefab na "mão" do jogador.
+
+Combinação:
+	O jogador poderá criar combinações dos itens. Para resolver esse problema, deve-se criar um ScriptableObject de Combinacao. Esse objeto terá as configurações necessárias para criar as combinações.
+	Em outras palavras, existirá um banco de Combinações, assim como terá um banco de Objetos e de Prefabs de Objetos.
+
+Pedido:
+
+	Pedidos serão enviados para o jogador. A barra inferior mostrará os pedido em andamento. 

@@ -35,4 +35,29 @@ public static class MyCanvas
         }
     }
 
+    public static RectTransform PainelPedido
+    {
+        get
+        {
+            var scrollView = GameObject.Find("Canvas").transform.Find("Painel_Pedidos");
+            return scrollView.Find("Viewport").Find("Content") as RectTransform;
+        }
+    }
+
+    public static List<GameObject> FilhosPainelPedido
+    {
+        get
+        {
+            var lista = new List<GameObject>();
+
+            for (int i = 0; i < PainelPedido.childCount; i++)
+            {
+                var g = PainelPedido.GetChild(i).gameObject;
+                lista.Add(g);
+            }
+
+            return lista;
+        }
+    }
+
 }
