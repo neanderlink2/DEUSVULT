@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Armadura de Bronze
   estadoObj: 0
+  qtdePontos: 25
   tempoParaFicarPronto: 5
   tempoDecorrido: 0
   isCombinavel: 1

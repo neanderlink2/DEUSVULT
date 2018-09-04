@@ -30,7 +30,7 @@ public abstract class Interavel : MonoBehaviour {
     /// <param name="other">Outro GameObject que estiver colidindo</param>
     protected virtual void OnTriggerStay (Collider other)
     {
-        if (other.GetComponent<Personagem>() != null)
+        if (other.GetComponent<Personagem>() != null && FaseController.IsFaseRodando())
         {
             Personagem = other.GetComponent<Personagem>();
             if (Input.GetKeyDown(Personagem.botaoInteracao))

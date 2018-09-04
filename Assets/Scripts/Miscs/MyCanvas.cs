@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Classe Helper para usar as interfaces gráficas. Essa classe contém apenas métodos e propriedades estáticas pois serão acessadas sem necessidade de instância da classe MyCanvas.
+/// Classe Helper para usar as interfaces gráficas. Essa classe contém apenas métodos e propriedades static pois serão acessadas sem necessidade de instância da classe MyCanvas.
 /// Isso é bastante útil para não precisar ficar codificando a busca do GameObject sempre que necessitar da interface gráfica. 
 /// </summary>
 public static class MyCanvas
@@ -61,6 +61,65 @@ public static class MyCanvas
             }
 
             return lista;
+        }
+    }
+
+    /// <summary>
+    /// Essa propriedade buscará o TxtTempo para mostrar o decorrer da fase. 
+    /// </summary>
+    public static Text TxtTempo
+    {
+        get
+        {
+            var g = GameObject.Find("Canvas").transform.Find("TxtTempo");
+            return g.GetComponent<Text>();
+        }
+    }
+
+    /// <summary>
+    /// Essa propriedade buscará a TelaFinal.
+    /// </summary>
+    public static GameObject TelaFinal
+    {
+        get
+        {
+            return GameObject.Find("Canvas").transform.Find("TelaFinal").gameObject;
+        }
+    }
+
+    /// <summary>
+    /// Essa propriedade buscará o PainelItensFinal.
+    /// </summary>
+    public static GameObject PainelItensFinal
+    {
+        get
+        {
+            return TelaFinal.transform.Find("Painel_Items").Find("Viewport").Find("Content").gameObject;
+        }
+    }
+
+    /// <summary>
+    /// Essa propriedade buscará o TxtItensEntregues para mostrar a pontuação final do jogador.
+    /// </summary>
+    public static Text TxtPontuacaoFinal
+    {
+        get
+        {
+            return TelaFinal.transform.Find("TxtPontuacaoFinal").GetComponent<Text>();
+        }
+    }
+
+    /// <summary>
+    /// Procura e apaga o primeiro filho que encontrar. O algoritmo procurará pelo nome do Objeto Necessário do pedido.
+    /// </summary>
+    /// <param name="nomeObjetoNecessario">Nome do objeto que será procurado</param>
+    public static void ApagarFilhoPainelPedido (string nomeObjetoNecessario)
+    {
+        if (FilhosPainelPedido.Where(x => x.GetComponentInChildren<Text>().text.Contains(nomeObjetoNecessario)).Count() > 0)
+        {
+            GameObject.Destroy(FilhosPainelPedido
+                .Where(x => x.GetComponentInChildren<Text>().text.Contains(nomeObjetoNecessario))
+                .First());
         }
     }
 

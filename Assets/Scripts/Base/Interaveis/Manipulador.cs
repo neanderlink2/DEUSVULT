@@ -168,7 +168,7 @@ public class Manipulador : Interavel
         for (float i = objeto.tempoDecorrido; objeto != null && i < objeto.tempoParaFicarPronto; i += 0.01f)
         {
             //Verifica se o manipulador esteja ativado. Caso ele tenha sido desativado em algum momento, para a iteração.
-            if (!isManipulando)
+            if (!isManipulando || !FaseController.IsFaseRodando())
             {
                 break;
             }
@@ -182,7 +182,7 @@ public class Manipulador : Interavel
         }
 
         //Verifica se existe um objeto no Manipulador.
-        if (objeto != null)
+        if (objeto != null && FaseController.IsFaseRodando())
         {
             //Se tiver, verifica se ele pode ser Aperfeiçoavel.
             if (objeto is ObjetoAperfeicoavel && objeto.estadoObj != EstadoObjeto.Pronto)

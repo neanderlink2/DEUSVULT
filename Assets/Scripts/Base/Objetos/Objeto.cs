@@ -17,6 +17,10 @@ public class Objeto : ScriptableObject
     /// Estado que se encontra
     /// </summary>
     public EstadoObjeto estadoObj;
+    /// <summary>
+    /// Quantidade de pontos que serão adicionados caso esse item esteja na lista de objetos entregues.
+    /// </summary>
+    public int qtdePontos;
      /// <summary>
      /// Tempo necessário para que ele fique pronto.
      /// </summary>

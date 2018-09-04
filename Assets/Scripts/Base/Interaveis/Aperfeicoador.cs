@@ -25,7 +25,7 @@ public class Aperfeicoador : Interavel
     /// <param name="collider">Colisor de outro GameObject que estiver colidindo</param>
     protected override void OnTriggerStay(Collider collider)
     {
-        if (collider.GetComponent<Personagem>() != null)
+        if (collider.GetComponent<Personagem>() != null && FaseController.IsFaseRodando())
         {
             Personagem = collider.GetComponent<Personagem>();
             if (Input.GetKey(Personagem.botaoInteracao))

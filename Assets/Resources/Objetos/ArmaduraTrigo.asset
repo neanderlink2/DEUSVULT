@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Armadura de Trigo
   estadoObj: 4
+  qtdePontos: 50
   tempoParaFicarPronto: 0
   tempoDecorrido: 0
   isCombinavel: 0

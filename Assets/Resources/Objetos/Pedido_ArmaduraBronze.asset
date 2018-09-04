@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Pedido_ArmaduraBronze
   m_EditorClassIdentifier: 
   objetoNecessario: {fileID: 11400000, guid: c455aaa1abe66b24c990e871caf3a084, type: 2}
-  tempoDeEspera: 0
+  tempoDeEspera: 50
   tempoDecorrido: 0

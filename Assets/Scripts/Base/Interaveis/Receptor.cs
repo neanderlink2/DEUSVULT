@@ -64,9 +64,7 @@ public class Receptor : Interavel
             //Destroi o "Panfleto" dele do painel de Pedidos. 
             //Procura todos os filhos do PainelPedido e trás uma coleção de Pedidos que tenham no texto o nome do Objeto Necessário.
             //Filtra e usa apenas o primeiro pedido da coleção.
-            GameObject.Destroy(MyCanvas.FilhosPainelPedido
-                .Where(x => x.GetComponentInChildren<Text>().text.Contains(pedido.objetoNecessario.nome))
-                .First());
+            MyCanvas.ApagarFilhoPainelPedido(pedido.objetoNecessario.nome);
 
             //Apaga o objeto que estiver na mão do jogador.
             Personagem.ObjetoNaMao = null;

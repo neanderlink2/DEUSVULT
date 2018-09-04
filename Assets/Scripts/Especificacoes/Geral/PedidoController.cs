@@ -37,19 +37,54 @@ public class PedidoController : MonoBehaviour
     /// <returns></returns>;
     public IEnumerator GeraPedido()
     {
-        //Instancia um pedido e o adiciona na lista de pedidos em andamento.
-        Pedido p = InstanciaPedido();
-        pedidosAndamento.Add(p);
+        if (FaseController.IsFaseRodando())
+        {
+            //Instancia um pedido e o adiciona na lista de pedidos em andamento.
+            Pedido p = InstanciaPedido();
+            pedidosAndamento.Add(p);
 
+
+            StartCoroutine(MostrarPedido(p));
+
+            //Espera os segundos determinados no Inspector.
+            yield return new WaitForSeconds(tempoNovoPedido);
+
+            //Quando termina essa corotina, uma nova entra em execução para gerar outros pedidos.
+            StartCoroutine(GeraPedido());
+        }
+    }
+
+    /// <summary>
+    /// Corotina responsável por apresentar um novo pedido, atualizando o tempo decorrido.
+    /// </summary>
+    /// <param name="pedido">Pedido que será mostrado</param>
+    /// <returns></returns>
+    public IEnumerator MostrarPedido (Pedido pedido)
+    {
         //Instancia o prefab do objeto e o adiciona no PainelPedido para mostrar o pedido ao jogador.
         var prefPedido = Instantiate(Resources.Load<GameObject>("Prefabs/Pedido"), MyCanvas.PainelPedido);
-        prefPedido.GetComponentInChildren<Text>().text = "Pedido\n" + p.objetoNecessario.nome;
+        prefPedido.GetComponentsInChildren<Text>()[0].text = "Pedido\n" + pedido.objetoNecessario.nome;
 
-        //Espera os segundos determinados no Inspector.
-        yield return new WaitForSeconds(tempoNovoPedido);
+        //Iteração que atualizará o tempo decorrido de acordo com a necessidade.
+        for (int i = 0; i <= pedido.tempoDeEspera; i++)
+        {
+            if (pedidosAndamento.Contains(pedido) && FaseController.IsFaseRodando())
+            {
+                prefPedido.GetComponentsInChildren<Text>()[1].text = pedido.tempoDecorrido + "/" + pedido.tempoDeEspera;
+                pedido.tempoDecorrido = i;
+                yield return new WaitForSeconds(1f);
+            }else
+            {
+                break;
+            }
+        }
 
-        //Quando termina essa corotina, uma nova entra em execução para gerar outros pedidos.
-        StartCoroutine(GeraPedido());
+        if (FaseController.IsFaseRodando())
+        {
+            //Quando chega ao fim do tempo do tempo decorrido, remove o pedido da lista de pedidos em andamento e o apaga do PainelPedidos.
+            pedidosAndamento.Remove(pedido);
+            MyCanvas.ApagarFilhoPainelPedido(pedido.objetoNecessario.nome);
+        }
     }
 
     /// <summary>

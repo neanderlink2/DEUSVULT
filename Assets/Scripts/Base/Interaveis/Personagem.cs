@@ -101,7 +101,11 @@ public class Personagem : MonoBehaviour
     /// </summary>
     protected virtual void FixedUpdate()
     {
-        Mover();
+        if (FaseController.IsFaseRodando())
+        {
+            Mover();
+
+        }
     }
 
     /// <summary>

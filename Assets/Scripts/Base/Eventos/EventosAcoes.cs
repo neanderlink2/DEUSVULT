@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Classe Helper para execuçãodos eventos. Servem apenas para chamar métodos, não codificar lógica nesta classe.
+/// Essa classe será usada pelo Inspector para acionar eventos, como o OnClick() e o OnInteragiu().
 /// </summary>
 public class EventosAcoes : MonoBehaviour
 {
@@ -51,6 +52,22 @@ public class EventosAcoes : MonoBehaviour
     public void InteragirArmazenador (GameObject armazenador)
     {
         armazenador.GetComponent<Armazenador>().ArmazenarObjeto();
+    }
+
+    /// <summary>
+    /// Carrega a cena do protótipo.
+    /// </summary>
+    public void CarregaCenaPrototipo ()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("prototipo");
+    }
+
+    /// <summary>
+    /// Sai da aplicação.
+    /// </summary>
+    public void Sair ()
+    {
+        Application.Quit();
     }
 
 }
