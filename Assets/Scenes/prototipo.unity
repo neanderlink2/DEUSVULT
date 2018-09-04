@@ -2341,12 +2341,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numeroJogador: 3
-  _vel: 6
-  _velRotacao: 18
-  _objetoNaMao: {fileID: 0}
+  vel: 4
+  velRotacao: 10
+  objetoNaMao: {fileID: 0}
   botaoInteracao: 112
-  _axisHorizontal: HorizontalP3
-  _axisVertical: VerticalP3
+  axisHorizontal: HorizontalP3
+  axisVertical: VerticalP3
 --- !u!1 &363790729
 GameObject:
   m_ObjectHideFlags: 0
@@ -5033,8 +5033,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d550826982d694fb88c2dbb9fdabfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedidos: []
+  pedidosPossiveis:
+  - {fileID: 11400000, guid: 1898c7fbe1532c54c96f715261a1ca64, type: 2}
+  - {fileID: 11400000, guid: d84e2f25527f91244983e861f6c40a43, type: 2}
   tempoNovoPedido: 50
+  pedidosAndamento: []
 --- !u!1 &763544911
 GameObject:
   m_ObjectHideFlags: 0
@@ -8547,12 +8550,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numeroJogador: 2
-  _vel: 8
-  _velRotacao: 20
-  _objetoNaMao: {fileID: 0}
+  vel: 5
+  velRotacao: 10
+  objetoNaMao: {fileID: 0}
   botaoInteracao: 102
-  _axisHorizontal: HorizontalP2
-  _axisVertical: VerticalP2
+  axisHorizontal: HorizontalP2
+  axisVertical: VerticalP2
 --- !u!54 &1235178380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9963,12 +9966,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numeroJogador: 1
-  _vel: 8
-  _velRotacao: 15
-  _objetoNaMao: {fileID: 0}
+  vel: 5
+  velRotacao: 10
+  objetoNaMao: {fileID: 0}
   botaoInteracao: 13
-  _axisHorizontal: HorizontalP1
-  _axisVertical: VerticalP1
+  axisHorizontal: HorizontalP1
+  axisVertical: VerticalP1
 --- !u!1 &1368876404
 GameObject:
   m_ObjectHideFlags: 0

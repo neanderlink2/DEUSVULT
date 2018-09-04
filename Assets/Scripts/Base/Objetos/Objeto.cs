@@ -36,6 +36,40 @@ public class Objeto : ScriptableObject
     /// </summary>
     public List<Combinacao> combinacoes;
 
+
+    /// <summary>
+    /// Adiciona um prefab na mão do jogador.
+    /// </summary>
+    /// <param name="nomeJogador">Nome, no Hierarchy, do jogador.</param>
+    public void SetarMaoJogador(string nomeJogador)
+    {
+        //Pega o número do jogador do nome dele.
+        var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
+
+        //Instancia o prefab, procura a 'Mao' do player e cria o prefab na mão do player.
+        var prefab = Resources.Load<GameObject>("Prefabs/" + this.nome);
+        var mao = GameObject.Find("Player" + numJogador).transform.Find("Mao");
+        GameObject.Instantiate(prefab, mao.position, Quaternion.Euler(0, 0, 90), mao);
+    }
+
+    /// <summary>
+    /// Retira o prefab da mão do jogador.
+    /// </summary>
+    /// <param name="nomeJogador">Nome, no Hierarchy, do jogador.</param>
+    public void LimparMaoJogador(string nomeJogador)
+    {
+        //Pega o número do jogador do nome dele.
+        var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
+
+        //Procura a mão do jogador e faz uma iteração que destroi todos os GameObjects que estiverem na 'Mao' do jogador.
+        var mao = GameObject.Find("Player" + numJogador).transform.Find("Mao");
+        for (int i = 0; i < mao.childCount; i++)
+        {
+            GameObject.Destroy(mao.GetChild(i).gameObject);
+        }
+    }
+
+
     /// <summary>
     /// Sobrecarga do operador + para facilitar na hora de combinar objetos. Retorna um objeto combinado, ou NULL caso não possa combinar.
     /// </summary>

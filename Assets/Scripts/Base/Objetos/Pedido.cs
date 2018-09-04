@@ -30,6 +30,9 @@ public class Pedido : ScriptableObject
     /// <returns></returns>
     public bool VerificarPedidoCompleto (Objeto objEntregue)
     {
+        //Obriga que o objeto necessário esteja pronto.
+        objetoNecessario = Instantiate(objetoNecessario);
+        objetoNecessario.estadoObj = EstadoObjeto.Pronto;
         //Verifica se o objeto entregue é o mesmo do objeto necessário e se está dentro do tempo de espera.
         if (objEntregue == objetoNecessario && tempoDecorrido <= tempoDeEspera)
         {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,18 +21,8 @@ public abstract class Interavel : MonoBehaviour {
     /// </summary>
     public Personagem Personagem { get; set; }
 
-
-
-    // Use this for initialization
-    void Start () {
-        
-    }
-
     // Update is called once per frame
-    public virtual void Update () {
-        
-	}
-
+    public virtual void Update () { }
 
     /// <summary>
     /// Permite que o personagem que estiver dentro do Trigger do SphereCollider faça uma interação.
@@ -50,7 +38,5 @@ public abstract class Interavel : MonoBehaviour {
                 OnInteragiu.Invoke(null);
             }
         }
-        
     }
-
 }

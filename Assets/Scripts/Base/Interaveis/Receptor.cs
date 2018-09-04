@@ -46,7 +46,7 @@ public class Receptor : Interavel
     private void VerificarEntregaSucesso()
     {
         //Pega a lista de pedidos, fazendo referência à classe PedidoController que está na Camera.
-        var p = Camera.main.GetComponent<PedidoController>().pedidos;
+        var p = Camera.main.GetComponent<PedidoController>().pedidosAndamento;
 
         //Verifica se na lista de pedidos há um pedido solicitando o objeto que está na mão do jogador.
         if (p.Where(x => x.VerificarPedidoCompleto(Personagem.ObjetoNaMao)).Count() > 0)
@@ -72,7 +72,7 @@ public class Receptor : Interavel
             Personagem.ObjetoNaMao = null;
 
             //Atribui a nova lista de pedido (sem o pedido que está completo agora) no campo 'pedidos' do PedidoController.
-            Camera.main.GetComponent<PedidoController>().pedidos = p;
+            Camera.main.GetComponent<PedidoController>().pedidosAndamento = p;
 
             // Avisa o persoangem que objeto foi entregue com sucesso. 
             Debug.Log("Objeto entregue com sucesso!");
