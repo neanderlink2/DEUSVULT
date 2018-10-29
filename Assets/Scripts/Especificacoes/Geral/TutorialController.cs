@@ -70,8 +70,11 @@ public class TutorialController : MonoBehaviour
         MyCanvas.MostrarManipulador.SetActive(false);
         DesligarTodosInteraveis();
         MessageController.Show("Você entregou o pedido com êxito! Parabéns!" +
-            "\nEste é o básico para mandar bem neste jogo. Treine bastante e esteja preparado para mais desafio no futuro. " +
-            "\nNovos pedidos continuarão surgindo, tente completá-los por sozinho!");
+            "\nEste é o básico para mandar bem neste jogo. Treine bastante e esteja preparado para mais desafio no futuro. " +            
+            "\nNovos pedidos continuarão surgindo, tente completá-los por sozinho!" +
+            "\nQuando quiser ir para a cena Protótipo, clique abaixo.", "Ir para Protótipo", () => {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("prototipo");
+            });
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("FonteMagica")).FirstOrDefault());
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Fornalha")).FirstOrDefault());
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Carrinho")).FirstOrDefault());
