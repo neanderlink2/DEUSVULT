@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: Trigo
   m_EditorClassIdentifier: 
   nome: Trigo
-  estadoObj: 4
+  estadoObj: 0
+  qtdePontos: 0
   tempoParaFicarPronto: 5
-  tempoDecorrido: 4.9900193
-  isCombinavel: 1
+  tempoDecorrido: 0
+  isCombinavel: 0
   combinacoes:
   - {fileID: 11400000, guid: 657b37e6427b0a1439a55fb3a5cf0558, type: 2}
