@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialController : MonoBehaviour
 {
@@ -72,8 +73,8 @@ public class TutorialController : MonoBehaviour
         MessageController.Show("Você entregou o pedido com êxito! Parabéns!" +
             "\nEste é o básico para mandar bem neste jogo. Treine bastante e esteja preparado para mais desafio no futuro. " +            
             "\nNovos pedidos continuarão surgindo, tente completá-los por sozinho!" +
-            "\nQuando quiser ir para a cena Protótipo, clique abaixo.", "Ir para Protótipo", () => {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("prototipo");
+            "\nQuando sentir-se a pronto, tente um desafio maior!", "Ir para primeira missão", () => {
+                SceneManager.LoadScene("CenaExemplo");
             });
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("FonteMagica")).FirstOrDefault());
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Fornalha")).FirstOrDefault());

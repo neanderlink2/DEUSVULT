@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Base\Interaveis\Manipulador.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Personagem.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Receptor.cs" />
+    <Compile Include="Assets\Scripts\Base\Interaveis\Removedor.cs" />
     <Compile Include="Assets\Scripts\Base\Interaveis\Super\Interavel.cs" />
     <Compile Include="Assets\Scripts\Base\Objetos\Armadura.cs" />
     <Compile Include="Assets\Scripts\Base\Objetos\Combinacao.cs" />
@@ -76,14 +77,16 @@
     <Compile Include="Assets\Scripts\Base\Objetos\ObjetoAperfeicoavel.cs" />
     <Compile Include="Assets\Scripts\Base\Objetos\Pedido.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Geral\FaseController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Geral\Fases\FaseExemploController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Geral\Fases\TutorialController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Geral\MessageController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Geral\PedidoController.cs" />
-    <Compile Include="Assets\Scripts\Especificacoes\Geral\TutorialController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\BalcaoController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\CarrinhoController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\FonteMagicaController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\ForjaController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\FornalhaController.cs" />
+    <Compile Include="Assets\Scripts\Especificacoes\Interaveis\ArrumaArmadura\LixeiraController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Personagens\BarbaroController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Personagens\LadinoController.cs" />
     <Compile Include="Assets\Scripts\Especificacoes\Personagens\PersonagemController.cs" />

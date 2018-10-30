@@ -15,6 +15,9 @@ public class ForjaController : Aperfeicoador
         {
             //Se for, adiciona um multiplicador de 3 para forjar uma armadura.
             tempoAdd = 3;
+        }else if (Personagem is LadinoController)
+        {
+            tempoAdd = 0.3f;
         }
         else
         {

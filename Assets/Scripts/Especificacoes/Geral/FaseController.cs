@@ -10,7 +10,7 @@ public class FaseController : MonoBehaviour
     public float tempoMaximoFase;
     public float tempoDecorrido;
 
-    public bool isFaseRodando = true;
+    public bool isFaseRodando = true, isInfinita = false;
 
     public Receptor receptor;
 
@@ -19,14 +19,17 @@ public class FaseController : MonoBehaviour
     /// </summary>
     public void Start()
     {
-        StartCoroutine(ContadorFase());
+        if (!isInfinita)
+        {
+            StartCoroutine(ContadorFase());
+        }
     }
 
     /// <summary>
     /// Começa a contar o tempo e o apresenta ao jogador.
     /// </summary>
     /// <returns></returns>
-    public IEnumerator ContadorFase ()
+    public IEnumerator ContadorFase()
     {
         for (float i = 0; i <= tempoMaximoFase; i += 0.1f)
         {

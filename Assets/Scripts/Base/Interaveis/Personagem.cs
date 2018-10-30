@@ -103,8 +103,7 @@ public class Personagem : MonoBehaviour
     {
         if (FaseController.IsFaseRodando())
         {
-            Mover();
-
+            Mover();            
         }
     }
 

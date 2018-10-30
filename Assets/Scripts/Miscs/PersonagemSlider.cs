@@ -14,10 +14,19 @@ public class PersonagemSlider : MonoBehaviour {
 	void Update () {
         try
         {
-            Vector3 v = new Vector3(perso.gameObject.transform.position.x, transform.position.y, perso.gameObject.transform.position.z + 1);
-            transform.position = v;
+            if (perso.ObjetoNaMao != null)
+            {
+                if ((perso.ObjetoNaMao as ObjetoAperfeicoavel).tempoDecorridoAperfeicoamento > 0)
+                {
+                    gameObject.SetActive(true);
+                }
+                Vector3 v = new Vector3(perso.gameObject.transform.position.x, transform.position.y, perso.gameObject.transform.position.z + 1);
+                transform.position = v;
+            }else
+            {
+                gameObject.SetActive(false);
+            }
         }        
         catch (System.Exception) { }
 	}
-    
 }

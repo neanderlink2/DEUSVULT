@@ -55,6 +55,15 @@ public class EventosAcoes : MonoBehaviour
     }
 
     /// <summary>
+    /// Interação do Removedor.
+    /// </summary>
+    /// <param name="removedor">GameObject do removedor</param>
+    public void InteragirRemovedor(GameObject removedor)
+    {
+        removedor.GetComponent<Removedor>().JogarObjetoFora();
+    }
+
+    /// <summary>
     /// Carrega a cena do protótipo.
     /// </summary>
     public void CarregaCenaPrototipo ()

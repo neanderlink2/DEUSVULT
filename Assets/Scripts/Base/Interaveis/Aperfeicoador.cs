@@ -16,8 +16,8 @@ public class Aperfeicoador : Interavel
     [Tooltip("Dirá ao código se este GameObject já está aperfeiçoando ou não.")]
     public bool isAperfeicoando;
 
-    [Tooltip("Multiplicador do tempo. Útil para aumentar a velocidade em certos momentos.")]
-    public int tempoAdd = 1;
+    [Tooltip("Multiplicador do tempo. Útil para aumentar ou diminuir a velocidade em certos momentos.")]
+    public float tempoAdd = 1;
 
     /// <summary>
     /// Sobrecarga do método de interação do Interavel. O motivo da sobrecarga é em função da necessidade de manter o botão apertado durante a interação.

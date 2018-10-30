@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Classe base para todos os Objetos que serão usados no projeto.
 /// </summary>
-[CreateAssetMenu(fileName = "Objeto", menuName = "Objetos/Objeto base")]
+[CreateAssetMenu(fileName = "Objeto", menuName = "Objetos/Objeto base...")]
 public class Objeto : ScriptableObject
 {
     /// <summary>
@@ -21,9 +21,9 @@ public class Objeto : ScriptableObject
     /// Quantidade de pontos que serão adicionados caso esse item esteja na lista de objetos entregues.
     /// </summary>
     public int qtdePontos;
-     /// <summary>
-     /// Tempo necessário para que ele fique pronto.
-     /// </summary>
+    /// <summary>
+    /// Tempo necessário para que ele fique pronto.
+    /// </summary>
     public float tempoParaFicarPronto;
     /// <summary>
     /// Tempo decorrido.
@@ -54,6 +54,17 @@ public class Objeto : ScriptableObject
         var prefab = Resources.Load<GameObject>("Prefabs/" + this.nome);
         var mao = GameObject.Find("Player" + numJogador).transform.Find("Mao");
         GameObject.Instantiate(prefab, mao.position, Quaternion.Euler(0, 0, 90), mao);
+
+        if (this is ObjetoAperfeicoavel)
+        {
+            if ((this as ObjetoAperfeicoavel).tempoDecorridoAperfeicoamento > 0)
+            {
+                var barra = GameObject.Find("CanvasWorld").transform.Find("BarraTarefaP" + numJogador).gameObject;
+                barra.GetComponent<UnityEngine.UI.Slider>().value = (this as ObjetoAperfeicoavel).tempoDecorridoAperfeicoamento;
+                barra.GetComponent<UnityEngine.UI.Slider>().maxValue = (this as ObjetoAperfeicoavel).tempoAperfeicoamento;
+                barra.SetActive(true);
+            }
+        }
     }
 
     /// <summary>
@@ -73,7 +84,6 @@ public class Objeto : ScriptableObject
         }
     }
 
-
     /// <summary>
     /// Sobrecarga do operador + para facilitar na hora de combinar objetos. Retorna um objeto combinado, ou NULL caso não possa combinar.
     /// </summary>
@@ -86,9 +96,11 @@ public class Objeto : ScriptableObject
         if (o1.combinacoes.Where(x => x.VerificarIngredientes(new Objeto[] { o1, o2 })).Count() > 0)
         {
             //Retorna o objeto 'resultado' da combinação.
-            return o1.combinacoes.Where(x => x.VerificarIngredientes(new Objeto[] { o1, o2 })).First().resultado;
+            var resu = o1.combinacoes.Where(x => x.VerificarIngredientes(new Objeto[] { o1, o2 })).First().resultado;
+            resu.estadoObj = EstadoObjeto.Pronto;
+            return resu;
         }
-        //Caso os ingredientes não batam, retorna NULL.
+        //Caso os ingredientes não sejam combináveis, retorna NULL.
         return null;
     }
 
