@@ -272,6 +272,55 @@ Prefab:
       propertyPath: perso
       value: 
       objectReference: {fileID: 1235178379}
+    - target: {fileID: 1337082990730962, guid: dbf6f3128b702e748a4202cef1f49d00, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224394186774032212, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224394186774032212, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224394186774032212, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224394186774032212, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114899886541797972, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114899886541797972, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114686129702721752, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.05828286
+      objectReference: {fileID: 0}
+    - target: {fileID: 114686129702721752, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.5661765
+      objectReference: {fileID: 0}
+    - target: {fileID: 114686129702721752, guid: dbf6f3128b702e748a4202cef1f49d00,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.10381814
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf6f3128b702e748a4202cef1f49d00, type: 2}
   m_IsPrefabAsset: 0
@@ -503,6 +552,29 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 505349998}
   m_Script: {fileID: 11500000, guid: f747006f60d30754296fa3c3a3e9b26f, type: 3}
+--- !u!1 &499735374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1337082990730962, guid: dbf6f3128b702e748a4202cef1f49d00,
+    type: 2}
+  m_PrefabInternal: {fileID: 50074022}
+--- !u!95 &499735375
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 499735374}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 68367a86bb1c92b43a21c70aa353be6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &505349998
 Prefab:
   m_ObjectHideFlags: 0
@@ -946,6 +1018,7 @@ MonoBehaviour:
   tempoMaximoFase: 50
   tempoDecorrido: 0
   isFaseRodando: 1
+  isInfinita: 0
   receptor: {fileID: 482960025}
 --- !u!1 &775634359
 GameObject:

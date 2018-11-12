@@ -12,6 +12,9 @@ public class Manipulador : Interavel
     public Objeto objeto;
     [Tooltip("Trigger que verifica se o Manipulador está em uso ou não")]
     public bool isManipulando;
+    [Tooltip("Tempo para o objeto passar do ponto no manipulador. Exemplo: Um alimento no fogão, se ele passar do ponto, irá queimar.")]
+    private float tempoPassarPonto = 5f;
+
     /// <summary>
     /// Cor padrão para a troca de cor (Temporário, imagino que usaremos outra forma de dar um feedback ao usuário).
     /// </summary>
@@ -115,7 +118,8 @@ public class Manipulador : Interavel
 
                 StartCoroutine(Manipular()); // Inicia Co-rotina de Manipulação
                 Debug.Log("Colocou para manipular");
-            }else
+            }
+            else
             {
                 //Caso exista objeto em manipulação, avisa o jogador.
                 Debug.Log("Já existe objeto em manipulação.");
@@ -159,13 +163,13 @@ public class Manipulador : Interavel
     public IEnumerator Manipular()
     {
         //Adiciona o estado EmManipulação para o objeto e mostra a BarraFornalha como uma barra de progresso.
-        Debug.Log("Manipulando...");
-        objeto.estadoObj = EstadoObjeto.EmManipulacao;
+        Debug.Log("Manipulando...");        
+        objeto.estadoObj = objeto.estadoObj != EstadoObjeto.PassouDoPonto ? EstadoObjeto.EmManipulacao : EstadoObjeto.PassouDoPonto;
         MyCanvas.BarraFornalha.gameObject.SetActive(true);
         MyCanvas.BarraFornalha.maxValue = objeto.tempoParaFicarPronto;
 
         //Loop para manipular um objeto, usando o campo 'tempoParaFicarPronto' como condição para finalização.
-        for (float i = objeto.tempoDecorrido; objeto != null && i < objeto.tempoParaFicarPronto; i += 0.01f)
+        for (float i = objeto.tempoDecorrido; objeto != null && i <= objeto.tempoParaFicarPronto; i += 0.01f)
         {
             //Verifica se o manipulador esteja ativado. Caso ele tenha sido desativado em algum momento, para a iteração.
             if (!isManipulando || !FaseController.IsFaseRodando())
@@ -182,7 +186,7 @@ public class Manipulador : Interavel
         }
 
         //Verifica se existe um objeto no Manipulador.
-        if (objeto != null && FaseController.IsFaseRodando())
+        if (objeto != null && FaseController.IsFaseRodando() && objeto.estadoObj != EstadoObjeto.PassouDoPonto)
         {
             if (TutorialController.isEsperandoManipular)
             {
@@ -200,9 +204,47 @@ public class Manipulador : Interavel
                 //Caso não possa aperfeiçoar, deixe o objeto como Pronto.
                 objeto.estadoObj = EstadoObjeto.Pronto;
             }
-
-            //Avisa que o Manipulador está em uso.
-            isManipulando = false;
         }
+
+        bool passouPonto = false;
+        if (objeto != null && objeto.estadoObj != EstadoObjeto.PassouDoPonto)
+        {
+            //Cria uma variável que verifica se o objeto passou do ponto, e espera um tempo para verificar se o objeto realmente passará do ponto.
+            passouPonto = true;
+            for (float i = 0; i < tempoPassarPonto; i += 0.01f)
+            {
+                MyCanvas.BarraFornalha.value = objeto.tempoParaFicarPronto;
+                MyCanvas.BarraFornalha.GetComponent<Animator>().SetBool("IsPassandoPonto", true);
+
+                if (!isManipulando || !FaseController.IsFaseRodando())
+                {
+                    passouPonto = false;
+                    break;
+                }
+
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
+        //Verifica se existe um objeto no Manipulador e o coloca como Passado do Ponto.
+        if (objeto != null && FaseController.IsFaseRodando() && passouPonto)
+        {
+            if (TutorialController.isEsperandoManipular)
+            {
+                //TutorialController.MostrarManipulouObjeto();
+            }
+            objeto.estadoObj = EstadoObjeto.PassouDoPonto;            
+        }
+
+        if (objeto.estadoObj == EstadoObjeto.PassouDoPonto)
+        {
+            MyCanvas.BarraFornalha.GetComponent<Animator>().SetTrigger("PassouPonto");
+        }
+
+        MyCanvas.BarraFornalha.GetComponent<Animator>().SetBool("IsPassandoPonto", false);
+
+        //Avisa que o Manipulador não está mais em uso.
+        isManipulando = false;
     }
+
 }

@@ -6,5 +6,6 @@ public enum EstadoObjeto {
     EmManipulacao,
     PreparadoParaAperfeicoar,
     EmAperfeicoamento,
-    Pronto
+    Pronto,
+    PassouDoPonto
 }

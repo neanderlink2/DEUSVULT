@@ -59,7 +59,7 @@ public class TutorialController : MonoBehaviour
         MyCanvas.MostrarManipulador.SetActive(false);
         DesligarTodosInteraveis();
         ToggleMovimentoPlayer(false);
-        MessageController.Show("Mandou bem! O trigo agora está cozido e pronto para ser entregue na mesa!", "Próximo", () =>
+        MessageController.Show("Mandou bem! O trigo agora está cozido e pronto para ser entregue na mesa! Mas pegue-o rápido pois ele irá queimar!", "Próximo", () =>
         {
             MostrarEntregarObjeto();
         });
