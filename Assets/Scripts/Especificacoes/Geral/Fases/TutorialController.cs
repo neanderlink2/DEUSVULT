@@ -39,6 +39,19 @@ public class TutorialController : MonoBehaviour
         MyCanvas.MostrarFonte.SetActive(true);
     }
 
+    public static void MostrarObjetoPassouPonto ()
+    {
+        Time.timeScale = 0;
+        MyCanvas.MostrarFonte.SetActive(false);
+        isEsperandoPegarTrigo = false;
+        DesligarTodosInteraveis();
+        ToggleMovimentoPlayer(false);
+        MessageController.Show("O trigo queimou! Que pena! Descarte o trigo na lixeira (cubo amarelo). Pegue outro e tente novamente.", "Próximo", () =>
+        {
+            MostrarCozinharTrigo();
+        });
+    }
+
     public static void MostrarPegouObjetoFonte()
     {
         Time.timeScale = 0;
@@ -98,7 +111,7 @@ public class TutorialController : MonoBehaviour
         Time.timeScale = 1;
         MyCanvas.MostrarManipulador.SetActive(true);
         ToggleMovimentoPlayer(true);
-        MessageController.Show("Agora, coloque o objeto no fogão para que ele possa cozinhar.");
+        MessageController.Show("Agora, coloque o trigo no fogão para que ele possa cozinhar. Tenha cuidado, se deixar o trigo por muito tempo no fogão ele irá queimar!");
         isEsperandoManipular = true;
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Fornalha")).FirstOrDefault());
     }

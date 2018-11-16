@@ -231,7 +231,7 @@ public class Manipulador : Interavel
         {
             if (TutorialController.isEsperandoManipular)
             {
-                //TutorialController.MostrarManipulouObjeto();
+                TutorialController.MostrarObjetoPassouPonto();
             }
             objeto.estadoObj = EstadoObjeto.PassouDoPonto;            
         }

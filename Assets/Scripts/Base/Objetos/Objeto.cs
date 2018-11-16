@@ -49,7 +49,8 @@ public class Objeto : ScriptableObject
     {
         //Pega o número do jogador do nome dele.
         var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
-
+        GameObject.Find("Player" + numJogador).GetComponent<Animator>().SetBool("IsCarregando", true);
+        GameObject.Find("Player" + numJogador).GetComponent<Animator>().SetTrigger("DeixarObjeto");
         //Instancia o prefab, procura a 'Mao' do player e cria o prefab na mão do player.
         var prefab = Resources.Load<GameObject>("Prefabs/" + this.nome);
         var mao = GameObject.Find("Player" + numJogador).transform.Find("Mao");
@@ -75,7 +76,8 @@ public class Objeto : ScriptableObject
     {
         //Pega o número do jogador do nome dele.
         var numJogador = int.Parse(nomeJogador.ElementAt(nomeJogador.Length - 1).ToString());
-
+        GameObject.Find("Player" + numJogador).GetComponent<Animator>().SetBool("IsCarregando", false);
+        GameObject.Find("Player" + numJogador).GetComponent<Animator>().SetTrigger("DeixarObjeto");
         //Procura a mão do jogador e faz uma iteração que destroi todos os GameObjects que estiverem na 'Mao' do jogador.
         var mao = GameObject.Find("Player" + numJogador).transform.Find("Mao");
         for (int i = 0; i < mao.childCount; i++)

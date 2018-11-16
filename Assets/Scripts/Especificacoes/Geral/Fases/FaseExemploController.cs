@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FaseExemploController : MonoBehaviour
 {
-
-    // Use this for initialization
     void Start()
     {
         Time.timeScale = 0;
@@ -18,20 +14,13 @@ public class FaseExemploController : MonoBehaviour
                 MessageController.Show("\nExistem outros tipos de interáveis na cena." +
                             "\n\tBancada (Azul): Guarda um objeto até que algum jogador o pegue. Para combinar objetos, coloque os dois objetos na bancada." +
                             "\n\tForja (Preto): Modela uma armadura para que possa adicionar a barra de bronze derretida." +
-                            "\n\tLixeira (Amarelo): Joga fora o objeto que está na mão do jogador.", "Próximo", () =>
+                            "\n\tLixeira (Amarelo): Joga fora o objeto que está na mão do jogador.", "Começar!", () =>
                             {
-                                MessageController.Show("Para criar uma Armadura de Bronze, você deve combinar uma Cota de Malha, que esteja concertada, e adicionar Bronze Derretido sobre ela." +
+                                MessageController.Show("Para criar uma Armadura de Bronze, você deve combinar uma Cota de Malha, que esteja consertada, e adicionar Bronze Derretido sobre ela." +
                                     "\nUse o Combinador para juntar os objetos.");
                                 Camera.main.GetComponent<PedidoController>().enabled = true;
-                                //MyCanvas.Mensagem.transform.parent.gameObject.SetActive(false);
                                 Time.timeScale = 1;
                             });
             });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
