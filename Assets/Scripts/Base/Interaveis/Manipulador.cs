@@ -212,15 +212,15 @@ public class Manipulador : Interavel
             //Cria uma variável que verifica se o objeto passou do ponto, e espera um tempo para verificar se o objeto realmente passará do ponto.
             passouPonto = true;
             for (float i = 0; i < tempoPassarPonto; i += 0.01f)
-            {
-                MyCanvas.BarraFornalha.value = objeto.tempoParaFicarPronto;
-                MyCanvas.BarraFornalha.GetComponent<Animator>().SetBool("IsPassandoPonto", true);
-
-                if (!isManipulando || !FaseController.IsFaseRodando())
+            {                
+                if (!isManipulando || !FaseController.IsFaseRodando() || objeto != null)
                 {
                     passouPonto = false;
                     break;
                 }
+
+                MyCanvas.BarraFornalha.value = objeto.tempoParaFicarPronto;
+                MyCanvas.BarraFornalha.GetComponent<Animator>().SetBool("IsPassandoPonto", true);
 
                 yield return new WaitForSeconds(0.01f);
             }
@@ -229,14 +229,16 @@ public class Manipulador : Interavel
         //Verifica se existe um objeto no Manipulador e o coloca como Passado do Ponto.
         if (objeto != null && FaseController.IsFaseRodando() && passouPonto)
         {
-            if (TutorialController.isEsperandoManipular)
+            if (Camera.main.GetComponent<TutorialController>() != null)
             {
                 TutorialController.MostrarObjetoPassouPonto();
             }
             objeto.estadoObj = EstadoObjeto.PassouDoPonto;            
+
+            
         }
 
-        if (objeto.estadoObj == EstadoObjeto.PassouDoPonto)
+        if (objeto != null && objeto.estadoObj == EstadoObjeto.PassouDoPonto)
         {
             MyCanvas.BarraFornalha.GetComponent<Animator>().SetTrigger("PassouPonto");
         }

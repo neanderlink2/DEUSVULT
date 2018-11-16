@@ -72,6 +72,13 @@ public class EventosAcoes : MonoBehaviour
     }
 
     /// <summary>
+    /// Carrega uma cena através de um nome.
+    /// </summary>
+    public void CarregaCena (string nomeCena) {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nomeCena);
+    }
+
+    /// <summary>
     /// Sai da aplicação.
     /// </summary>
     public void Sair ()

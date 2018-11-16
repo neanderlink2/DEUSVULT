@@ -39,4 +39,20 @@ public abstract class Interavel : MonoBehaviour {
             }
         }
     }
+    
+    /// <summary>
+    /// Permite que o personagem que entrar dentro do Trigger do SphereCollider faça uma interação.
+    /// </summary>
+    /// <param name="other">Outro GameObject que estiver colidindo</param>
+    protected virtual void OnTriggerEnter (Collider other)
+    {
+        if (other.GetComponent<Personagem>() != null && FaseController.IsFaseRodando())
+        {
+            Personagem = other.GetComponent<Personagem>();
+            if (Input.GetKeyDown(Personagem.botaoInteracao))
+            {
+                OnInteragiu.Invoke(null);
+            }
+        }
+    }
 }

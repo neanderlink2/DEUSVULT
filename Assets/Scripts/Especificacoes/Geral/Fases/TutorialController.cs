@@ -48,6 +48,9 @@ public class TutorialController : MonoBehaviour
         ToggleMovimentoPlayer(false);
         MessageController.Show("O trigo queimou! Que pena! Descarte o trigo na lixeira (cubo amarelo). Pegue outro e tente novamente.", "Próximo", () =>
         {
+            AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name == "FonteMagica").FirstOrDefault());
+            AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Fornalha")).FirstOrDefault());
+            AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Lixeira")).FirstOrDefault());
             MostrarCozinharTrigo();
         });
     }
@@ -103,6 +106,7 @@ public class TutorialController : MonoBehaviour
         MessageController.Show("Para finalizar este pedido, pegue o trigo pronto que está no fogão e coloque-o na mesa.");
         isEsperandoEntregar = true;
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Fornalha")).FirstOrDefault());
+        AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Lixeira")).FirstOrDefault());
         AtivarInteravel(FindObjectsOfType<Interavel>().Where(x => x.name.Equals("Carrinho")).FirstOrDefault());
     }
 
